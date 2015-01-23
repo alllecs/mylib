@@ -5,10 +5,11 @@
 
 int main(void)
 {
-	double a, b;
+	int a;
+	double b;
 
 	printf("Введите число\n");
-	scanf("%f", &a);
+	scanf("%d", &a);
 
 	if (a < 0) {
 		printf("Указано отрицательное число\n");
