@@ -1,11 +1,11 @@
 CC=gcc
 
-CFLAGS=-W -Wall
+CFLAGS=-W -Wall -lm
 
-all: time
+all: time kor
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) time
+	$(RM) time kor
