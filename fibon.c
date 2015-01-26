@@ -3,7 +3,14 @@
 int main(void)
 {
 	double i, j, k;
-	double f;
+	double f, p;
+	int ret;
+
+
+	ret = scanf("Введите погрешность в формате 0.x %lf", &p);
+
+	if (ret != 1)
+		return 2;
 
 	j = 1;
 	i = 1;
@@ -20,8 +27,18 @@ int main(void)
 		printf("%.2f\n", j);
 
 		f = i / j;
-		if ((f <= 0.7) || (f >= 0,6))
-		printf("Коэффициент 'золотого сечения' %3.2f\n", f);
+
+		switch (p) {
+			case 0.01:
+				printf("Коэффициент 'золотого сечения' %.3f\n", f);
+				break;
+			case 0.001:
+				printf("Коэффициент 'золотого сечения' %.4f\n", f);
+				break;
+			case 0.0001:
+				printf("Коэффициент 'золотого сечения' %.5f\n", f);
+
+		}
 	}
 
 	return 0;
