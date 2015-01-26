@@ -2,13 +2,13 @@
 
 int main(void)
 {
-	int i, j, k;
-	float f;
+	double i, j, k;
+	double f;
 
 	j = 1;
 	i = 1;
-	printf("%d\n", i);
-	printf("%d\n", j);
+	printf("%.2f\n", i);
+	printf("%.2f\n", j);
 	while (j < 100) {
 		k = i + j;
 		i = j;
@@ -16,9 +16,12 @@ int main(void)
 
 		if (j > 100)
 			break;
-		double f = (double) j / (double) i;
-		printf("%3f\n", f);
-		printf("%d\n", j);
+
+		printf("%.2f\n", j);
+
+		f = i / j;
+		if ((f <= 0.7) || (f >= 0,6))
+		printf("Коэффициент 'золотого сечения' %3.2f\n", f);
 	}
 
 	return 0;
