@@ -12,6 +12,11 @@ int main(void)
 	if (ret != 1)
 		return 2;
 
+	if (n < 0) {
+		printf("Введено отрицательное число\n");
+		return 3;
+	}
+
 	j = 1;
 	i = 1;
 	m = 1;
@@ -23,8 +28,8 @@ int main(void)
 		m += 1;
 	}
 	printf("%.0f\n", i);
-	k = j / i;
-	printf("%.3f\n", k);
-	printf("%.6f\n", (k - f));
+	printf("%.3f\n", (j / i));
+	printf("%.6f\n", (f - (j / i)));
+
 	return 0;
 }
