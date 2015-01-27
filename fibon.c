@@ -1,35 +1,39 @@
 #include <stdio.h>
 
-int main(void)
+int fibon(char n)
 {
-	int n, m;
-	int ret;
-	double i, j, k, f;
-
-	printf("Введите номер члена ряда Фибоначчи\n");
-	ret = scanf("%d", &n);
-
-	if (ret != 1)
-		return 2;
-
-	if (n < 0) {
-		printf("Введено отрицательное число\n");
-		return 3;
-	}
+	int m;
+	double k;
+	int i;
+	double j;
 
 	j = 1;
 	i = 1;
 	m = 1;
 	while (m < n) {
-		f = j / i;
+//		f = j / i;
 		k = i + j;
 		i = j;
 		j = k;
+		k = j / i;
 		m += 1;
 	}
-	printf("%.0f\n", i);
-	printf("%.3f\n", (j / i));
-	printf("%.6f\n", (f - (j / i)));
+	return i;
+}
+
+int main(int argc, char *argv[])
+{
+	char n;
+
+	n = argv[1];
+	if (n < 0) {
+		printf("Введено отрицательное число\n");
+		return 3;
+	}
+
+	printf("%d\n", fibon(n));
+//	printf("%.3f\n", k);
+//	printf("%.6f\n", (f - k));
 
 	return 0;
 }
