@@ -4,9 +4,9 @@
 int fibon(int n)
 {
 	int m;
-	double k;
+	int k;
 	int i;
-	double j;
+	int j;
 
 	j = 1;
 	i = 1;
@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
 		return 4;
 	}
 
-	 ret = sscanf(argv[1], "%d", &n);
+	ret = sscanf(argv[1], "%d", &n);
 
 	if (ret != 1)
-		return 5;
+		return 2;
 
 	if (n < 0) {
 		printf("Введено отрицательное число\n");
