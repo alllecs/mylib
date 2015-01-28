@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int fibonr(int n)
+{
+	if (n == 1)
+		return (n = 1);
+	if (n == 2)
+		return (n = 1);
+
+	return (fibonr(n - 1) + fibonr(n - 2));
+}
+
 int fibon(int n)
 {
 	int m;
@@ -40,7 +50,7 @@ int main(int argc, char *argv[])
 		return 3;
 	}
 
-	printf("%d\n", fibon(n));
+	printf("%d\n", fibonr(n));
 
 	return 0;
 }
