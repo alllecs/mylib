@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int fibon(char n)
+int fibon(int n)
 {
 	int m;
 	double k;
@@ -11,11 +12,9 @@ int fibon(char n)
 	i = 1;
 	m = 1;
 	while (m < n) {
-//		f = j / i;
 		k = i + j;
 		i = j;
 		j = k;
-		k = j / i;
 		m += 1;
 	}
 	return i;
@@ -23,17 +22,21 @@ int fibon(char n)
 
 int main(int argc, char *argv[])
 {
-	char n;
+	int n;
 
-	n = argv[1];
+	if (argc != 2) {
+		printf("Отсутствует или указано больше 1 аргумента\n");
+		return 4;
+	}
+
+	sscanf(argv[1], "%d", &n);
+
 	if (n < 0) {
 		printf("Введено отрицательное число\n");
 		return 3;
 	}
 
 	printf("%d\n", fibon(n));
-//	printf("%.3f\n", k);
-//	printf("%.6f\n", (f - k));
 
 	return 0;
 }
