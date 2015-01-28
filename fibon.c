@@ -13,14 +13,11 @@ int fibonr(int n)
 
 int fibon(int n)
 {
-	int m;
 	int k;
-	int i;
-	int j;
+	int m = 1;
+	int i = 1;
+	int j = 1;
 
-	j = 1;
-	i = 1;
-	m = 1;
 	while (m < n) {
 		k = i + j;
 		i = j;
