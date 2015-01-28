@@ -23,13 +23,17 @@ int fibon(int n)
 int main(int argc, char *argv[])
 {
 	int n;
+	int ret;
 
 	if (argc != 2) {
 		printf("Отсутствует или указано больше 1 аргумента\n");
 		return 4;
 	}
 
-	sscanf(argv[1], "%d", &n);
+	 ret = sscanf(argv[1], "%d", &n);
+
+	if (ret != 1)
+		return 5;
 
 	if (n < 0) {
 		printf("Введено отрицательное число\n");
