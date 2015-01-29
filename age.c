@@ -3,13 +3,10 @@
 int main(void)
 {
 	int i;
-	int ret;
 
 	printf("Введите возраст\n");
-	ret = scanf("%d", &i);
+	scanf("%d", &i);
 
-//	if (ret != 1);
-//		return 2;
 	if(i < 1 || i > 100) {
 		printf("Неправильно указан возраст\n");
 		return 3;
