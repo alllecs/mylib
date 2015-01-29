@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2) {
 		printf("Отсутствует или указано больше 1 аргумента\n");
-		return 4;
+		return 1;
 	}
 
 	ret = sscanf(argv[1], "%d", &n);
