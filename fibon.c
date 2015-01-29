@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	}
 
 	if (n > 45) {
-		printf("Результат больше 32 разрядов\n");
+		printf("При n > 45 возможно переполнение\n");
 		return 5;
 	}
 
