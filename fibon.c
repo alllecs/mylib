@@ -42,9 +42,19 @@ int main(int argc, char *argv[])
 	if (ret != 1)
 		return 2;
 
+	if (n == 0) {
+		printf("Введите число больше 0\n");
+		return 3;
+	}
+
 	if (n < 0) {
 		printf("Введено отрицательное число\n");
-		return 3;
+		return 4;
+	}
+
+	if (n > 45) {
+		printf("Результат больше 32 разрядов\n");
+		return 5;
 	}
 
 	printf("%d\n", fibonr(n));
