@@ -35,9 +35,6 @@ int main(void)
 	j = i % 100;
 	printf("Ваш возраст %d\n", age(j));
 
-//	if (j >= 10 && j <= 80)
-//		printf(" лет\n");
-//	else
 
 	if (i < 18) {
 		x = 18 - i;
