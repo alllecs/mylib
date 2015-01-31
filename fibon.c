@@ -87,20 +87,17 @@ int main(int argc, char *argv[])
 	int i;
 	double eps;
 //	double frac_prev;
-
-#if 0
-	/* p -> eps */
-
-	if (eps < 0.0001 || eps > 0.1) {
-		printf("Ошибка ввода погрешности\n");
-		return 2;
-	}
-#endif
 	double f;
 	double f_pr = 0;
 	double dif;
 
 	sscanf(argv[1], "%lf", &eps);
+
+	if (eps < 0.0001 || eps > 0.1) {
+		printf("Ошибка ввода погрешности\n");
+		return 2;
+	}
+
 
 	for (i = 5; i < 30; i++) {
 		f = (double)fibon(i) / (double)fibon(i - 1);
