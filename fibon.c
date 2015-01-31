@@ -50,19 +50,13 @@ int fibon(int n)
 	}
 	return i;
 }
-/*
-double gold(double eps)
-{
-	return ...;
-}
-*/
 int main(int argc, char *argv[])
 {
-//	int n;
-//	int ret;
-//	int m = 0;
-//	double f, p;
-
+/*	int n;
+	int ret;
+	int m = 0;
+	double f, p;
+*/
 	if (argc != 2) {
 		printf("Отсутствует или указано больше 1 аргумента\n");
 		return 1;
@@ -91,32 +85,70 @@ int main(int argc, char *argv[])
 
 #endif
 	int i;
-	double p;
+	double eps;
+//	double frac_prev;
 
-	sscanf(argv[1], "%lf", &p);
+#if 0
+	/* p -> eps */
 
-	for (i = 1; i < 30; i++) {
-		double f;
-		double e, d;
+	if (eps < 0.0001 || eps > 0.1) {
+		printf("Ошибка ввода погрешности\n");
+		return 2;
+	}
+#endif
+	double f;
+	double f_pr = 0;
+	double dif;
 
+	sscanf(argv[1], "%lf", &eps);
+
+	for (i = 5; i < 30; i++) {
 		f = (double)fibon(i) / (double)fibon(i - 1);
+		printf("fib_%d = %d, fib_%d = %d, f = %.12f, f - f_pr =%.12f\n",
+			i, fibon(i),
+			i - 1, fibon(i - 1),
+			f, f - f_pr);
+
+		dif = f - f_pr;
+		if (dif < 0)
+			dif = dif * (- 1);
+
+		f_pr = f;
+
+
+		if (dif <= eps && dif > 0) {
+			printf("Предел последовательности = %lf\n", dif);
+			return 2;
+		}
+	}
+
+
+
+#if 0
+	frac_prev = ..?
+	/* 1 - > 3 */
+	for (i = 5; i > 30; i++) {
+		double frac_cur;
+
+		frac_cur = (double)fibon(i) / (double)fibon(i - 1);
 //		printf("f_%d = %d, f_%d = %d, f1/f2 = %.12f\n",
 //			i, fibon(i),
 //			i - 1, fibon(i - 1),
 //			f);
-		e = (double)fibon(i - 1) / (double)fibon(i - 2);
-		printf("x_%d = %.12f\n", i, f);
-		d = f - e;
-		printf("%f\n", d);
-		if (d < 0) {
-			d = d * (- 1);
-		}
-		if (d <= p && d > 0) {
+
+		/* current fraction */
+		/* frac_cur = (double)fibon(i - 1) / (double)fibon(i - 2); */
+		/* previous fraction: frac_prev */
+		printf("x_%d = %.12f\n", i, frac_cur);
+		printf("%f\n", (frac_cur - frac_prev));
+		if ((frac_cur - frac_prev) >= eps &&
+			  (frac_cur - frac_prev) > 0) {
 			printf("Найден предел последовательности\n");
 			return 1;
 		}
+		frac_prev = frac_cur;
 	}
-
+#endif
 
 	return 0;
 }
