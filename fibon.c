@@ -115,8 +115,7 @@ int main(int argc, char *argv[])
 			f, f - f_pr);
 
 		dif = f - f_pr;
-		dif = fabs(dif);
-
+		dif = modul(dif);
 		f_pr = f;
 
 
