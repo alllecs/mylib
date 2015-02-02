@@ -19,6 +19,11 @@ int main(void)
 	printf("Введите систему счисления\n");
 	ret = scanf("%d", &system);
 
+	if (system < 2 || system > 16) {
+		printf("Неправильно введена система счисления\n");
+		return 3;
+	}
+
 	if (ret != 1)
 		return 2;
 
