@@ -8,12 +8,19 @@ int main(void)
 	int rest;
 	int i, k;
 	int mass[99];
+	int ret;
 
 	printf("Введите десятичное число\n");
-	scanf("%d", &numb);
+	ret = scanf("%d", &numb);
+
+	if (ret != 1)
+		return 2;
 
 	printf("Введите систему счисления\n");
-	scanf("%d", &system);
+	ret = scanf("%d", &system);
+
+	if (ret != 1)
+		return 2;
 
 	while (numb > 0) {
 		rest = numb % system;
