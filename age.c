@@ -1,37 +1,23 @@
 #include <stdio.h>
+#include <math.h>
 
-char *age(char j)
+char *age(int i)
 {
-	switch (j % 10) {
+	switch (i % 10) {
 		case 1:
-			return("год");
-			break;
+			return"год";
 		case 2:
 		case 3:
 		case 4:
-			return("года");
-			break;
-		default:
-			return("лет");
-			break;
+			return"года";
 	}
+	return"лет";
 }
-/*
-char *stra(int hz)
-{
-	if (hz > 1000)
-		return "kHz";
 
-	return "Hz";
-}
-*/
 int main(void)
 {
 	int i;
-	char j;
 	int x, y;
-
-//	printf("%s %s\n", stra(1001), stra(10));
 
 	printf("Введите возраст\n");
 	scanf("%d", &i);
@@ -41,31 +27,24 @@ int main(void)
 		return 3;
 	}
 
-	j = i % 100;
-	printf("Ваш возраст %d %s\n", i, age(j));
+	printf("Ваш возраст %d %s\n", i, age(i));
 
+	x = fabs(i - 18);
 	if (i < 18) {
-		x = 18 - i;
-		j = x % 100;
-		printf("Вам до совершеннолетия %d %s\n", x, age(j));
+		printf("Вам до совершеннолетия %d %s\n", x, age(x));
 	}
 	if (i > 18) {
-		x = i - 18;
-		j = x % 100;
-		printf("Вы совершеннолетний %d %s\n", x, age(j));
+		printf("Вы совершеннолетний %d %s\n", x, age(x));
 	}
 	if (i == 18)
 		printf("Вы совершеннолетний\n");
 
+	y = fabs(i - 60);
 	if (i < 60) {
-		y = 60 - i;
-		j = y % 100;
-		printf("Вам до пенсии %d %s\n", y, age(j));
+		printf("Вам до пенсии %d %s\n", y, age(y));
 	}
 	if (i > 60) {
-		y = i - 60;
-		j = y % 100;
-		printf("Вы на пенсии %d %s\n", y, age(j));
+		printf("Вы на пенсии %d %s\n", y, age(y));
 	}
 	if (i == 60)
 		printf("Вы пенсионер\n");
