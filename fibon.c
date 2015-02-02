@@ -4,7 +4,8 @@
 
 double modul(double dif)
 {
-	dif = fabs(dif);
+	if (dif < 0)
+		dif = dif * - 1;
 
 	return dif;
 }
