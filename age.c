@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int age(int j)
+char *age(char j)
 {
 	switch (j % 10) {
 		case 1:
@@ -29,7 +29,7 @@ char *stra(int hz)
 int main(void)
 {
 	int i;
-	int j;
+	char j;
 	int x, y;
 
 //	printf("%s %s\n", stra(1001), stra(10));
@@ -43,18 +43,17 @@ int main(void)
 	}
 
 	j = i % 100;
-	printf("Ваш возраст %d\n", age(j));
-
+	printf("Ваш возраст %d %s\n", i, age(j));
 
 	if (i < 18) {
 		x = 18 - i;
 		j = x % 100;
-		printf("Вам до совершеннолетия %d %c\n", x, age(j));
+		printf("Вам до совершеннолетия %d %s\n", x, age(j));
 	}
 	if (i > 18) {
 		x = i - 18;
 		j = x % 100;
-		printf("Вы совершеннолетний %d %c\n", x, age(j));
+		printf("Вы совершеннолетний %d %s\n", x, age(j));
 	}
 	if (i == 18)
 		printf("Вы совершеннолетний\n");
@@ -62,12 +61,12 @@ int main(void)
 	if (i < 60) {
 		y = 60 - i;
 		j = y % 100;
-		printf("Вам до пенсии %d %c\n", y, age(j));
+		printf("Вам до пенсии %d %s\n", y, age(j));
 	}
 	if (i > 60) {
 		y = i - 60;
 		j = y % 100;
-		printf("Вы на пенсии %d %c\n", y, age(j));
+		printf("Вы на пенсии %d %s\n", y, age(j));
 	}
 	if (i == 60)
 		printf("Вы пенсионер\n");
