@@ -4,18 +4,17 @@ char *age(char j)
 {
 	switch (j % 10) {
 		case 1:
-			printf(" год");
+			return("год");
 			break;
 		case 2:
 		case 3:
 		case 4:
-			printf(" года");
+			return("года");
 			break;
 		default:
-			printf(" лет");
+			return("лет");
 			break;
 	}
-	return j;
 }
 /*
 char *stra(int hz)
