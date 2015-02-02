@@ -1,5 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+
+double modul(double dif)
+{
+	dif = fabs(dif);
+
+	return dif;
+}
 
 int f1(int n)
 {
@@ -86,7 +94,6 @@ int main(int argc, char *argv[])
 #endif
 	int i;
 	double eps;
-//	double frac_prev;
 	double f;
 	double f_pr = 0;
 	double dif;
@@ -107,14 +114,13 @@ int main(int argc, char *argv[])
 			f, f - f_pr);
 
 		dif = f - f_pr;
-		if (dif < 0)
-			dif = dif * (- 1);
+		dif = fabs(dif);
 
 		f_pr = f;
 
 
 		if (dif <= eps && dif > 0) {
-			printf("Предел последовательности = %lf\n", dif);
+			printf("Предел последовательности = %lf\n", modul(dif));
 			return 2;
 		}
 	}
