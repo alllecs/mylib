@@ -3,18 +3,15 @@
 
 int main(void)
 {
-	int system;
-	int numb;
-	int rest;
-	int i, k;
+	int system, numb, rest;
+	int i;
+	int k;
 	int mass[99];
 	int ret;
+	double binnumb, bin;
 
 	printf("Введите десятичное число\n");
-	ret = scanf("%d", &numb);
-
-	if (ret != 1)
-		return 2;
+	ret = scanf("%lf", &binnumb);
 
 	printf("Введите систему счисления\n");
 	ret = scanf("%d", &system);
@@ -27,15 +24,43 @@ int main(void)
 	if (ret != 1)
 		return 2;
 
+	numb = (int)binnumb;
+	bin = binnumb - (int)binnumb;
+
 	while (numb > 0) {
-		rest = numb % system;
-		numb = numb / system;
-		mass[i++] = rest;
+		if (bin < 1) {
+			mass[i++] = 0;
+			if (bin > 0.5) {
+				bin = bin - 0.5;
+				rest = 1;
+			} else
+				rest = 0;
+			mass[i++] = rest;
+
+			if (bin > 0.25) {
+				bin = bin - 0.25;
+				rest = 1;
+			} else
+				rest = 0;
+			mass[i++] = rest;
+
+			if (bin > 0.125) {
+				bin = bin - 0.125;
+				rest = 1;
+			} else
+				rest = 0;
+			mass[i++] = rest;
+		}
+		if (numb > 1) {
+			rest = numb % system;
+			numb = numb / system;
+			mass[i++] = rest;
+		}
 	}
+
 	for (k = i - 1; k > - 1; k--) {
-		printf("%d", mass[k]);
+		printf("%X", mass[k]);
 	}
 	printf("\n");
 	return 0;
-
 }
