@@ -23,6 +23,18 @@ int main(void)
 	numb = (int)binnumb;
 	bin = binnumb - (int)binnumb;
 
+	if (numb >=1)
+		while (numb > 0) {
+			rest = numb % system;
+			numb = numb / system;
+			mass[i++] = rest;
+	}
+
+	for (k = i - 1; k > - 1; k--) {
+		printf("%X", mass[k]);
+	}
+	printf(".");
+	i = 0;
 	if (bin < 1 && bin > 0) {
 		rest = 0;
 		while (bin > 0.0001) {
@@ -48,18 +60,12 @@ int main(void)
 			mass[i++] = rest;
 			break;
 		}
+
+		for (i = 0; i < 3; i++) {
+			printf("%X", mass[i]);
+		}
 	}
 
-	if (numb >=1)
-		while (numb > 0) {
-			rest = numb % system;
-			numb = numb / system;
-			mass[i++] = rest;
-	}
-
-	for (k = i - 1; k > - 1; k--) {
-		printf("%X", mass[k]);
-	}
 	printf("\n");
 	return 0;
 }
