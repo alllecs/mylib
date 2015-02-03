@@ -17,16 +17,16 @@ int fibon(int n)
 	}
 	return i;
 }
+
 int main(int argc, char *argv[])
 {
 	int i;
 	double eps;
-	double f;
 	double f_pr = 0;
 	double dif;
 
 	if (argc != 2) {
-		printf("Отсутствует или указано больше 1 аргумента\n");
+		printf("Отсутствует аргумент или указано больше 1 аргумента\n");
 		return 1;
 	}
 
@@ -37,22 +37,23 @@ int main(int argc, char *argv[])
 		return 2;
 	}
 
-
-	for (i = 5; i < 30; i++) {
+	for (i = 1; i < 30; i++) {
+		double f;
 		f = (double)fibon(i) / (double)fibon(i - 1);
+#if 0
 		printf("fib_%d = %d, fib_%d = %d, f = %.12f, f - f_pr =%.12f\n",
 			i, fibon(i),
 			i - 1, fibon(i - 1),
 			f, fabs(f - f_pr));
-
+#endif
 		dif = fabs(f - f_pr);
-		f_pr = f;
-
 		if (dif <= eps && dif > 0) {
 			printf("Предел последовательности = %lf\n", f);
-			return 2;
+			return 0;
 		}
+
+		f_pr = f;
 	}
 
-	return 0;
+	return 2;
 }
