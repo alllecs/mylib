@@ -1,3 +1,5 @@
+#define DEBUG
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -40,7 +42,7 @@ int main(int argc, char *argv[])
 	for (i = 1; i < 30; i++) {
 		double f;
 		f = (double)fibon(i) / (double)fibon(i - 1);
-#if 0
+#ifdef DEBUG
 		printf("fib_%d = %d, fib_%d = %d, f = %.12f, f - f_pr =%.12f\n",
 			i, fibon(i),
 			i - 1, fibon(i - 1),
