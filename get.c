@@ -23,7 +23,7 @@ int main(void)
 	}
 
 
-	for (i = 0;i < symbol; i++)
+	for (i = 0; i < symbol; i++)
 		putchar(buf[i]);
 
 	printf("\nNumber of symbols = %d\n", symbol);
