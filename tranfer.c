@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#define INT_SIZE 99
+
 int main(int argc, char *argv[])
 {
 	int system, numb, rest;
