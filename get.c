@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define N 99
+
 int main(void)
 {
 	char c;
@@ -8,22 +10,24 @@ int main(void)
 	int symbol = 0;
 	int word = 0;
 	int line = 0;
-	char buf[99];
+	char buf[N];
 
-	while ((c = getchar()) != EOF) {
-		if (c == ' ' || c == '	' || c == '\n') {
-			word++;
-			if (c == '\n')
-				line++;
-			c = '\n';
+	while (1) {
+		c = getchar();
+//		printf("%d\n", c);
+		if (c == EOF)
+			break;
+		if (c > 32) {
+			symbol++;
+			buf[i++] = c;
+			continue;
 		}
-		buf[i++] = c;
-
-		symbol++;
+		if (c == 10) {
+			line++;
+		}
 	}
 
-
-	for (i = 0; i < symbol; i++)
+	for (i = 0; buf[i] != '\0'; i++)
 		putchar(buf[i]);
 
 	printf("\nNumber of symbols = %d\n", symbol);
