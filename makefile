@@ -2,10 +2,10 @@ CC=gcc
 
 CFLAGS=-W -Wall -lm
 
-all: time kor fibon age tranfer get
+all: 02-time 03-kor 04-fibon 05-age 06-conversion 07-get
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	$(RM) time kor fibon age tranfer get
+	$(RM) 02-time 03-kor 04-fibon 05-age 06-conversion 07-get
