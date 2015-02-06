@@ -13,12 +13,12 @@ int main(int argc, char *argv[])
 	double binnumb, bin;
 	double x;
 
-	if (argc == 2)
+	if (argc >= 2 || argc <= 4)
 		sscanf(argv[1], "%lf", &binnumb);
+		sscanf(argv[2], "%d", &system);
 
 
-
-	if (argc != 2) {
+	if (argc < 2 || argc > 4) {
 		printf("Введите десятичное число\n");
 		scanf("%lf", &binnumb);
 
@@ -45,13 +45,33 @@ int main(int argc, char *argv[])
 		printf("%X", mass[k]);
 	}
 
-	if (bin < 1 && bin > 0) {
+	if (bin < 1 && bin > 0 && system == 2) {
 		i = 0;
 		rest = 0;
 		printf(".");
 		x = 1;
 		while (x > 0.0001) {
 			x = x / 2;
+			if (bin >= x) {
+				bin = bin - x;
+				rest = 1;
+			} else
+				rest = 0;
+			mass[i++] = rest;
+		}
+
+		for (i = 0; i < 3; i++) {
+			printf("%X", mass[i]);
+		}
+	}
+
+	if (bin < 1 && bin > 0 && system == 10) {
+		i = 0;
+		rest = 0;
+		printf(".");
+		x = 1;
+		while (x > 0.0001) {
+			x = x / 10;
 			if (bin >= x) {
 				bin = bin - x;
 				rest = 1;
