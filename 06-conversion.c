@@ -72,9 +72,10 @@ int main(int argc, char *argv[])
 		x = 1;
 		while (x > 0.0001) {
 			x = x / 10;
-			if (bin >= x) {
-				bin = bin - x;
-				rest = 1;
+			if (bin != 0) {
+				bin = bin * 10;
+				rest = (int)bin;
+				bin = bin - (int)bin;
 			} else
 				rest = 0;
 			mass[i++] = rest;
