@@ -44,13 +44,13 @@ int main(int argc, char *argv[])
 	for (k = i - 1; k > - 1; k--) {
 		printf("%X", mass[k]);
 	}
-
+#if 0
 	if (bin < 1 && bin > 0 && system == 2) {
 		i = 0;
 		rest = 0;
 		printf(".");
 		x = 1;
-		while (x > 0.0001) {
+		while (x > 0.0000001) {
 			x = x / 2;
 			if (bin >= x) {
 				bin = bin - x;
@@ -64,16 +64,16 @@ int main(int argc, char *argv[])
 			printf("%X", mass[i]);
 		}
 	}
-
-	if (bin < 1 && bin > 0 && system == 10) {
+#endif
+	if (bin < 1 && bin > 0) {
 		i = 0;
 		rest = 0;
 		printf(".");
 		x = 1;
-		while (x > 0.0001) {
-			x = x / 10;
+		while (x > 0.0000001) {
+			x = x / system;
 			if (bin != 0) {
-				bin = bin * 10;
+				bin = bin * system;
 				rest = (int)bin;
 				bin = bin - (int)bin;
 			} else
