@@ -44,27 +44,6 @@ int main(int argc, char *argv[])
 	for (k = i - 1; k > - 1; k--) {
 		printf("%X", mass[k]);
 	}
-#if 0
-	if (bin < 1 && bin > 0 && system == 2) {
-		i = 0;
-		rest = 0;
-		printf(".");
-		x = 1;
-		while (x > 0.0000001) {
-			x = x / 2;
-			if (bin >= x) {
-				bin = bin - x;
-				rest = 1;
-			} else
-				rest = 0;
-			mass[i++] = rest;
-		}
-
-		for (i = 0; i < 3; i++) {
-			printf("%X", mass[i]);
-		}
-	}
-#endif
 	if (bin < 1 && bin > 0) {
 		i = 0;
 		rest = 0;
