@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 			mass[i++] = rest;
 		}
 
-		for (i = 0; i < 3; i++) {
+		for (i = 0; i < 8; i++) {
 			printf("%X", mass[i]);
 		}
 	}
