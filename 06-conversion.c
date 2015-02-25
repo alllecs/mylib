@@ -14,23 +14,22 @@ int main(int argc, char *argv[])
 	double x;
 	double pogr = 0.0000001;
 
-	if (argc >= 2 || argc <= 4) {
+	if (argc >= 2 && argc <= 4) {
 		sscanf(argv[1], "%lf", &binnumb);
 		sscanf(argv[2], "%d", &system);
-	}
-
-	if (argc < 2 || argc > 4) {
+	} else {
 		printf("Введите десятичное число\n");
 		scanf("%lf", &binnumb);
 
 		printf("Введите систему счисления\n");
 		scanf("%d", &system);
-
-		if (system < 2 || system > 16) {
-			printf("Неправильно введена система счисления\n");
-			return 3;
-		}
 	}
+
+	if (system < 2 || system > 16) {
+		printf("Неправильно введена система счисления\n");
+		return 3;
+	}
+
 	if (binnumb < 0) {
 		printf("-");
 		binnumb = binnumb * (-1);
