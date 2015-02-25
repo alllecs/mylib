@@ -12,11 +12,12 @@ int main(int argc, char *argv[])
 	int mass[N];
 	double binnumb, bin;
 	double x;
+	double pogr = 0.0000001;
 
-	if (argc >= 2 || argc <= 4)
+	if (argc >= 2 || argc <= 4) {
 		sscanf(argv[1], "%lf", &binnumb);
 		sscanf(argv[2], "%d", &system);
-
+	}
 
 	if (argc < 2 || argc > 4) {
 		printf("Введите десятичное число\n");
@@ -29,6 +30,10 @@ int main(int argc, char *argv[])
 			printf("Неправильно введена система счисления\n");
 			return 3;
 		}
+	}
+	if (binnumb < 0) {
+		printf("-");
+		binnumb = binnumb * (-1);
 	}
 
 	numb = (int)binnumb;
@@ -49,7 +54,7 @@ int main(int argc, char *argv[])
 		rest = 0;
 		printf(".");
 		x = 1;
-		while (x > 0.0000001) {
+		while (x > pogr) {
 			x = x / system;
 			if (bin != 0) {
 				bin = bin * system;
