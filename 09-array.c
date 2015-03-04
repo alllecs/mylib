@@ -1,9 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-const unsigned int i = 8;
-const unsigned int j = 8;
 
-int array[i][j] = {
+unsigned int array[8][8] = {
 { 0, 0, 1, 3, 3, 0, 0, 1 },
 { 3, 0, 3, 1, 1, 1, 0, 3 },
 { 1, 0 ,0, 3, 0, 0, 0, 1 },
@@ -14,16 +13,16 @@ int array[i][j] = {
 { 1, 0, 1, 1, 3, 0, 3, 0 }
 };
 
+
 void main()
 {
 	int k = 0;
-	i = 0;
-	j = 0;
-	while (i < 8) {
-		while (j < 8) {
-			k = array[i][j++];
+	int i, j;
+	for (i = 0; i < 8; i++) {
+		for (j = 0; j < 8; j++) {
+			k = k + array[i][j];
 		}
-		printf("Команда k%d набрала всего %d очков\n", i, k);
-		i++;
+		printf("Команда k%d набрала всего %d очков\n", i+1, k);
+		k = 0;
 	}
 }
