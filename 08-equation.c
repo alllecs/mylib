@@ -40,7 +40,7 @@ void main(void)
 	printf("Введите точность = ");
 	scanf("%lf", &e);
 
-	if ((f(a) > 0 && f(b) > 0) || (f(a) < 0 && f(b) < 0)) {
+	if ((f(a) * f(b)) > 0) {
 		printf("Границы отрезка одинакового знака\n");
 		return;
 	}
