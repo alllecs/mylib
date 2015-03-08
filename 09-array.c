@@ -1,28 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define COMMANDS 8
 
-unsigned int array[8][8] = {
-{ 0, 0, 1, 3, 3, 0, 0, 1 },
-{ 3, 0, 3, 1, 1, 1, 0, 3 },
-{ 1, 0 ,0, 3, 0, 0, 0, 1 },
-{ 0, 1, 0, 0, 3, 1, 0, 1 },
-{ 0, 1, 3, 0, 0, 0, 1, 0 },
-{ 3, 1, 3, 1, 3, 0, 1, 3 },
-{ 3, 3, 3, 3, 1, 1, 0, 0 },
-{ 1, 0, 1, 1, 3, 0, 3, 0 }
-};
+unsigned int array[COMMANDS][COMMANDS];
 
-
-void main()
+void rand_my(int a)
 {
-	int k = 0;
+	a = rand();
+	if(a == 2) {
+		a = 3;
+	}
+	return a;
+}
+
+void tab(int a)
+{
 	int i, j;
+
 	for (i = 0; i < 8; i++) {
 		for (j = 0; j < 8; j++) {
-			k = k + array[i][j];
-		}
-		printf("Команда k%d набрала всего %d очков\n", i+1, k);
-		k = 0;
+			if (i == j) {
+				array[i][j] = 0;
+			}
+			if (rand_my(a) == 1) {
+				array[i][j] = rand_my(a);
+				array[j][i] = rand_my(a);
+			}
+			if (rand_my(a) == 3) {
+				array[i][j] = rand_my(a);
+				array[j][i] = 0;
+			}
+			if (rand_my(a) == 0) {
+				array[i][j] = rand_my(a);
+				array[j][i] = 3;
+			}
+			printf("%d", array[i][j]);
 	}
+}
+
+
+void main(void)
+{
+	int i, j;
+	int sum;
+	int a;
+
+	sum = 0;
+	tab(a);
+	for (i = 0; i < 8; i++) {
+		for (j = 0; j < 8; j++) {
+			sum = sum + array[i][j];
+		}
+		printf("Команда %d набрала %d очков\n", i, sum);
+	}
+
 }
