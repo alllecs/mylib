@@ -79,5 +79,9 @@ int main(void)
 			sum = sum + array[i][j];
 		}
 		printf("Команда %d набрала %d очков\n", i + 1, sum);
+		if (sum == 3 * COMMANDS) {
+			printf("Команда %d набрала максимальное число очков\n", i+1);
+		}
 	}
+	printf("Максимальное возможное число очков = %d\n", 3 * COMMANDS);
 }
