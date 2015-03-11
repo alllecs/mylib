@@ -124,7 +124,7 @@ int main(void)
 	for (i = 0; i < 7; i++) {
 		if (max[i] > sum) {
 			sum = max[i];
-			printf("Победитель %s, набрал %d очков\n", cmd_name[i], sum);
+			printf("Победила команда  %s, набрав %d очков\n", cmd_name[i], sum);
 		} else {
 			sum = sum;
 		}
