@@ -4,40 +4,23 @@
 
 #define LINE 256
 
-char input[LINE][90];
-/*
 void main()
 {
-	get();
 
 	int i, j;
-
-	for (i = 0, j = 0; i < 5; i++) {
-		gets(input);
-		putchar(input[i]);
-	}
-
-}
-*/
-void main()
-{
+	char input1[LINE];
+	char input2[LINE];
 	char c;
-	char *add[256];
-	int i, j;
-	int *a;
 
-	i = 0;
 	j = 0;
-	while ((c = getchar()) != EOF) {
+	gets(input1);
+	for (i = 0; j < strlen(input1); i++) {
+		c = input1[i];
 		if (c != ' ' && c != '\t') {
-			input[i][j] = c;
-//			printf("%c", c);
-			add[i] = &c;
-			i++;
-		}
-		if (c == '\0') {
+			input2[j] = c;
 			j++;
 		}
 	}
-	puts(*input);
+
+		puts(input2);
 }
