@@ -15,20 +15,20 @@
 
 #define LINE 256
 
-void main()
+void in(char *input1)
 {
+	int stl;
 	int i;
-	char input1[LINE];
-	char c;
-	char stl;
+	int c;
+	char *input;
 	char *x;
 
-	x = &input1[0];
-
-	bzero(input1, sizeof(input1));
-
-	fgets(input1, LINE, stdin);
 	stl = strlen(input1);
+
+	input = (char *)malloc(stl + 1);
+	x = &input[0];
+
+	bzero(input, sizeof(input));
 	for (i = 0; i < stl && i < LINE; i++) {
 		c = input1[i];
 		if (c != ' ' && c != '\t') {
@@ -36,7 +36,15 @@ void main()
 			x++;
 		}
 	}
+	puts(input);
+}
 
-	*x = '\0';
-	puts(input1);
+
+void main()
+{
+	char input1[LINE];
+
+	fgets(input1, LINE, stdin);
+	in(input1);
+
 }
