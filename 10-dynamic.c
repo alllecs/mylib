@@ -25,6 +25,8 @@ void main()
 
 	x = &input1[0];
 
+	bzero(input1, sizeof(input1));
+
 	fgets(input1, LINE, stdin);
 	stl = strlen(input1);
 	for (i = 0; i < stl && i < LINE; i++) {
