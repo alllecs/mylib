@@ -48,7 +48,7 @@ char *in(char *input1)
 //	free(input);
 }
 
-void main()
+int main()
 {
 	char input1[LINE];
 	int i;
@@ -67,5 +67,5 @@ void main()
 		i++;
 	}
 
-	return;
+	return 0;
 }
