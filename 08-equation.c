@@ -29,7 +29,7 @@ double del(double a, double b, double e)
 	return c;
 }
 
-void main(void)
+int main(void)
 {
 	double x, e;
 	double a, b;
@@ -42,9 +42,10 @@ void main(void)
 
 	if ((f(a) * f(b)) > 0) {
 		printf("Границы отрезка одинакового знака\n");
-		return;
+		return 1;
 	}
 	x = del(a, b, e);
 	printf("x = %lf\n", f(x));
 
+	return 0;
 }
