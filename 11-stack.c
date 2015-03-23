@@ -49,7 +49,7 @@ char *in(char *input1)
 }
 
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int i;
 	char in1[LINE];
@@ -84,4 +84,6 @@ void main(int argc, char *argv[])
 		i++;
 	}
 	fclose(fp);
+
+	return 0;
 }
