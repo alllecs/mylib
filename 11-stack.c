@@ -19,8 +19,79 @@
 
 #define LINE 256
 #define WORD 5
+typedef struct node_t TNode;
 
-char *pointers[WORD];
+typedef struct node_t {
+	TNode *pre;
+	char *text;
+} TNode;
+
+typedef struct stack_t TStack;
+
+typedef struct stack_t {
+	int number;
+	TNode *top;
+} TStack;
+
+void print(TStack *stack, FILE *fp)
+{
+	TNode *node;
+	int i = 1;
+
+	node = stack->top;
+	while (node) {
+//		printf("%d: %s\n", i, node->text);
+		fputs(node->text, fp);
+		fputs("\n", fp);
+		node = node->pre;
+		i++;
+
+	}
+}
+
+TStack *Create(void)
+{
+	TStack *t;
+
+	t = malloc(sizeof(TStack));
+	t->number = 0;
+	t->top = NULL;
+
+	return t;
+
+}
+
+void Push(TStack *stack, char *text)
+{
+	TNode *node = malloc(sizeof(TNode));
+	node->pre = stack->top;
+	stack->top = node;
+	node->text = strdup(text);
+	stack->number++;
+}
+
+char *Pop(TStack *stack)
+{
+	TNode *node;
+	node = stack->top;
+	if (node) {
+		char *t;
+		stack->top = node->pre;
+		stack->number--;
+		t = node->text;
+		free(node);
+		return t;
+	}
+
+	return NULL;
+}
+
+void Clear(TStack *stack)
+{
+	while (stack->top != NULL) {
+		Pop(stack);
+	}
+}
 
 char *in(char *input1)
 {
@@ -44,16 +115,16 @@ char *in(char *input1)
 		}
 	}
 	return input;
-//	free(input);
-
 }
 
 
 int main(int argc, char *argv[])
 {
 	int i;
-	char in1[LINE];
+	char ln1[LINE];
 	FILE *fp;
+
+	TStack *stack = NULL;
 
 	if (argc != 2) {
 		printf("Отсутствует или указано больше 1 аргумента\n");
@@ -66,23 +137,20 @@ int main(int argc, char *argv[])
 		perror("Ошибка при работе с файлом");
 		exit(1);
 	}
-/*
-	while ((c = getchar()) != '\0') {
-		*x = c;
-	}
-*/
+
+	stack =  Create();
 	i = 0;
+
 	while (i < WORD) {
-		fgets(in1, LINE, stdin);
-		pointers[i] = in(in1);
+		fgets(ln1, LINE, stdin);
+		Push(stack, in(ln1));
 		i++;
 	}
-	i = 0;
-	while (i < WORD) {
-		fputs(pointers[i], fp);
-		fputs("\n", fp);
-		i++;
-	}
+
+	print(stack, fp);
+
+	Clear(stack);
+
 	fclose(fp);
 
 	return 0;
