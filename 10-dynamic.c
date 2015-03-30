@@ -65,6 +65,7 @@ int main()
 	while (i < STR) {
 		printf("pointers[%d] = %s", i, pointers[i]);
 		i++;
+		free(pointers[i]);
 	}
 
 	return 0;
