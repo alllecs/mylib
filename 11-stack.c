@@ -74,6 +74,7 @@ char *Pop(TStack *stack)
 {
 	TNode *node;
 	node = stack->top;
+
 	if (node) {
 		char *t;
 		stack->top = node->pre;
@@ -82,7 +83,6 @@ char *Pop(TStack *stack)
 		free(node);
 		return t;
 	}
-
 	free(t);
 	return NULL;
 }
@@ -103,12 +103,11 @@ char *in(char *input1)
 	char *x;
 
 	stl = strlen(input1);
-
 	input = (char *)malloc(stl + 1);
 	bzero(input, stl + 1);
 	x = &input[0];
 
-	for ( i = 0; i < stl && i < LINE; i++) {
+	for (i = 0; i < stl && i < LINE; i++) {
 		c = input1[i];
 		if (isalpha(c)) {
 			*x = c;
@@ -124,6 +123,7 @@ int main(int argc, char *argv[])
 	int i;
 	char ln1[LINE];
 	FILE *fp;
+	char *input;
 
 	TStack *stack = NULL;
 
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	stack =  Create();
+	stack = Create();
 	i = 0;
 
 	while (i < WORD) {
@@ -149,10 +149,8 @@ int main(int argc, char *argv[])
 	}
 
 	print(stack, fp);
-
 	Clear(stack);
-
+	free(input);
 	fclose(fp);
-
 	return 0;
 }
