@@ -19,6 +19,7 @@
 
 #define LINE 256
 #define WORD 5
+
 typedef struct node_t TNode;
 
 typedef struct node_t {
@@ -33,7 +34,9 @@ typedef struct stack_t {
 	TNode *top;
 } TStack;
 
-void print(TStack *stack, FILE *fp)
+char *pointers[WORD];
+
+void Print(TStack *stack, FILE *fp)
 {
 	TNode *node;
 	int i = 1;
@@ -83,7 +86,6 @@ char *Pop(TStack *stack)
 		free(node);
 		return t;
 	}
-	free(t);
 	return NULL;
 }
 
@@ -123,7 +125,6 @@ int main(int argc, char *argv[])
 	int i;
 	char ln1[LINE];
 	FILE *fp;
-	char *input;
 
 	TStack *stack = NULL;
 
@@ -131,7 +132,6 @@ int main(int argc, char *argv[])
 		printf("Отсутствует или указано больше 1 аргумента\n");
 		exit(1);
 	}
-
 	fp = fopen(argv[1], "w");
 
 	if (fp == NULL) {
@@ -144,13 +144,14 @@ int main(int argc, char *argv[])
 
 	while (i < WORD) {
 		fgets(ln1, LINE, stdin);
-		Push(stack, in(ln1));
+		Push(stack, (pointers[i] = in(ln1)));
 		i++;
 	}
-
-	print(stack, fp);
+	while (i < WORD) {
+		free(pointers[i]);
+	}
+	Print(stack, fp);
 	Clear(stack);
-	free(input);
 	fclose(fp);
 	return 0;
 }
