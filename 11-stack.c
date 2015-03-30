@@ -36,22 +36,6 @@ typedef struct stack_t {
 
 char *pointers[WORD];
 
-void Print(TStack *stack, FILE *fp)
-{
-	TNode *node;
-	int i = 1;
-
-	node = stack->top;
-	while (node) {
-//		printf("%d: %s\n", i, node->text);
-		fputs(node->text, fp);
-		fputs("\n", fp);
-		node = node->pre;
-		i++;
-
-	}
-}
-
 TStack *Create(void)
 {
 	TStack *t;
@@ -61,7 +45,6 @@ TStack *Create(void)
 	t->top = NULL;
 
 	return t;
-
 }
 
 void Push(TStack *stack, char *text)
@@ -87,6 +70,22 @@ char *Pop(TStack *stack)
 		return t;
 	}
 	return NULL;
+}
+
+void Print(TStack *stack, FILE *fp)
+{
+	TNode *node;
+	int i = 1;
+
+	node = stack->top;
+	while (node) {
+//		printf("%d: %s\n", i, node->text);
+		fputs(node->text, fp);
+		fputs("\n", fp);
+		node = node->pre;
+		i++;
+
+	}
 }
 
 void Clear(TStack *stack)
