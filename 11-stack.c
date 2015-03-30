@@ -34,8 +34,6 @@ typedef struct stack_t {
 	TNode *top;
 } TStack;
 
-char *pointers[WORD];
-
 TStack *Create(void)
 {
 	TStack *t;
@@ -54,6 +52,7 @@ void Push(TStack *stack, char *text)
 	stack->top = node;
 	node->text = strdup(text);
 	stack->number++;
+	free(text);
 }
 
 char *Pop(TStack *stack)
@@ -84,14 +83,16 @@ void Print(TStack *stack, FILE *fp)
 		fputs("\n", fp);
 		node = node->pre;
 		i++;
-
 	}
 }
 
 void Clear(TStack *stack)
 {
+	char *t;
+
 	while (stack->top != NULL) {
-		Pop(stack);
+		t = Pop(stack);
+		free(t);
 	}
 }
 
@@ -131,8 +132,8 @@ int main(int argc, char *argv[])
 		printf("Отсутствует или указано больше 1 аргумента\n");
 		exit(1);
 	}
-	fp = fopen(argv[1], "w");
 
+	fp = fopen(argv[1], "w");
 	if (fp == NULL) {
 		perror("Ошибка при работе с файлом");
 		exit(1);
@@ -140,14 +141,10 @@ int main(int argc, char *argv[])
 
 	stack = Create();
 	i = 0;
-
 	while (i < WORD) {
 		fgets(ln1, LINE, stdin);
-		Push(stack, (pointers[i] = in(ln1)));
+		Push(stack, in(ln1));
 		i++;
-	}
-	while (i < WORD) {
-		free(pointers[i]);
 	}
 	Print(stack, fp);
 	Clear(stack);
