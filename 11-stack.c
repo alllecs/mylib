@@ -83,6 +83,7 @@ char *Pop(TStack *stack)
 		return t;
 	}
 
+	free(t);
 	return NULL;
 }
 
